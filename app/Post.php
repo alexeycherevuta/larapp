@@ -6,4 +6,7 @@ class Post extends Model
     protected $fillable = [
       'title', 'content'
     ];
+    public function users(){
+        return $this->hasOne(User::class);
+    }
 }
