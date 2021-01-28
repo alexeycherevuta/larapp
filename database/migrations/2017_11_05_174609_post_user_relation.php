@@ -7,7 +7,7 @@ class PostUserRelation extends Migration
     public function up()
     {
         Schema::table('users', function(Blueprint $table) {
-           $table->integer('post_id')->unsigned()->index();
+           $table->integer('post_id')->unsigned()->index()->nullable();
            $table->foreign('post_id')->references('id')->on('posts');
         });
         Schema::table('posts', function(Blueprint $table) {
@@ -17,11 +17,5 @@ class PostUserRelation extends Migration
     }
     public function down()
     {
-        Schema::table('users', function(Blueprint $table) {
-            $table->dropColumn(['user_id']);
-        });
-        Schema::table('posts', function(Blueprint $table) {
-            $table->dropColumn(['post_id']);
-        });
     }
 }
