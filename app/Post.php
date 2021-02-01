@@ -9,4 +9,11 @@ class Post extends Model
     public function users(){
         return $this->hasOne(User::class);
     }
+    public function isOnline(){
+        if ($this->online == 1){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
