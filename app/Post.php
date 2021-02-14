@@ -4,15 +4,18 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     protected $fillable = [
-      'title', 'content'
+        'title', 'content'
     ];
-    public function users(){
+    public function users()
+    {
         return $this->hasOne(User::class);
     }
-    public function isOnline(){
-        if ($this->online == 1){
+    public function isOnline()
+    {
+        if ($this->online == 1) {
             return true;
         } else {
             return false;
         }
     }
+}
