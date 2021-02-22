@@ -6,16 +6,14 @@ class Post extends Model
     protected $fillable = [
         'title', 'content'
     ];
-    public function users()
+    protected $casts = [
+        'is_online' => 'boolean'
+    ];
+    public function user()
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
-    public function isOnline()
-    {
-        if ($this->online == 1) {
-            return true;
-        } else {
-            return false;
-        }
+    public function scopeOnline($query){
+        return $query->where('is_online', '=', true);
     }
 }
