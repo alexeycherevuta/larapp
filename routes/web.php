@@ -4,4 +4,6 @@ Route::get('/', function () {
 });
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('/blog', 'PostController');
+Route::prefix('admin')->group(function() {
+    Route::resource('/blog', 'PostController');
+});
