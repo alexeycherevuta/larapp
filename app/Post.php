@@ -1,10 +1,12 @@
 <?php
 namespace App;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 class Post extends Model
 {
+    use Sluggable;
     protected $fillable = [
-        'title', 'content'
+        'title', 'content', 'user_id'
     ];
     protected $casts = [
         'is_online' => 'boolean'
@@ -15,5 +17,13 @@ class Post extends Model
     }
     public function scopeOnline($query){
         return $query->where('is_online', '=', true);
+    }
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
     }
 }

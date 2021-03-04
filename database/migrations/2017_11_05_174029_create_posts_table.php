@@ -10,6 +10,7 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->longText('content');
+            $table->string('slug')->unique();
             $table->boolean('is_online')->default(false);
             $table->timestamps();
         });

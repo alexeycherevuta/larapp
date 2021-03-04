@@ -7,6 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -55,7 +56,9 @@
                 </div>
             </div>
         </nav>
-        @yield('content')
+        <div class="container">
+                @yield('content')
+        </div>
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
