@@ -8,4 +8,6 @@ Route::group(['middleware' => 'auth'], function(){
     Route::prefix('admin')->group(function() {
         Route::resource('/blog', 'PostController');
     });
+    Route::get('image', 'ImageController@create')->name('image.show');
+    Route::post('image', 'ImageController@store')->name('image.create');
 });
