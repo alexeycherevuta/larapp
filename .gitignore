@@ -2,12 +2,17 @@
 /public/hot
 /public/uploads
 /public/storage
+/public/adminer.php
+/public/adminer.css
 /storage/*.key
 /vendor
 /.idea
 /.vagrant
 Homestead.json
 Homestead.yaml
+Vagrantfile
+after.sh
+aliases
 npm-debug.log
 yarn-error.log
 .env
