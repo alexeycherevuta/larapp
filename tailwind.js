@@ -72,13 +72,13 @@ var colors = {
   'pink-light': '#fa7ea8',
   'pink-lighter': '#ffbbca',
   'pink-lightest': '#ffebef',
-  get ['brand-darkest']() { return this['orange-darkest']; },
-  get ['brand-darker']() { return this['orange-darker']; },
-  get ['brand-dark']() { return this['orange-dark']; },
-  get ['brand']() { return this['orange']; },
-  get ['brand-light']() { return this['orange-light']; },
-  get ['brand-lighter']() { return this['orange-lighter']; },
-  get ['brand-lightest']() { return this['orange-lightest']; },
+  get ['brand-darkest']() { return this['blue-darkest']; },
+  get ['brand-darker']() { return this['blue-darker']; },
+  get ['brand-dark']() { return this['blue-dark']; },
+  get ['brand']() { return this['blue']; },
+  get ['brand-light']() { return this['blue-light']; },
+  get ['brand-lighter']() { return this['blue-lighter']; },
+  get ['brand-lightest']() { return this['blue-lightest']; },
 }
 module.exports = {
   colors: colors,
@@ -91,6 +91,7 @@ module.exports = {
   fonts: {
     'sans': [
       '-apple-system',
+      'Source Sans Pro',
       'BlinkMacSystemFont',
       'Segoe UI',
       'Roboto',
@@ -102,6 +103,7 @@ module.exports = {
       'Helvetica Neue',
     ],
     'serif': [
+      'Lora',
       'Constantia',
       'Lucida Bright',
       'Lucidabright',
@@ -114,6 +116,7 @@ module.exports = {
       'serif',
     ],
     'mono': [
+      'Source Code Pro',
       'Menlo',
       'Monaco',
       'Consolas',
