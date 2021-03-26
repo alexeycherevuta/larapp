@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Validator;
 class RegisterController extends Controller
 {
     use RegistersUsers;
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/dashboard';
     public function __construct()
     {
         $this->middleware('guest');

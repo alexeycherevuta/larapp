@@ -1,32 +1,33 @@
 @extends('layouts.app')
 @section('content')
-    <div class="row">
-        <div class="col-md-12">
-            <a href="{{ route('blog.create') }}" class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded pull-right" style="margin-bottom: 20px">
-                Créer une news
-            </a>
-        </div>
-    <div class="col-md-12">
-        @foreach($posts as $post)
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">{{$post->title}}</h3>
-                </div>
-                <div class="panel-body">
-                    {{$post->content}}
-                    <form method="post" action="{{route('blog.destroy', ['id' => $post->id])}}">
+<div class="w-full max-w-lg mx-auto leading-normal">
+    <p class="float-right">
+        <a href="{{ route('blog.create') }}" class="bg-blue hover:bg-blue-dark text-white py-2 px-4 rounded  no-underline">Rédiger une news</a>
+    </p>
+    <h1 class="text-black font-bold text-4xl mb-6 border-b border-grey-light">Blog</h1>
+    <div class="flex flex-wrap -mx-4">
+    @foreach($posts as $post)
+        <div class="w-full md:w-1/2 lg:w-1/2 px-4 mb-8">
+            <div class="border border-grey-light bg-white shadow">
+                <article class="mb-2 p-3">
+                    <h2 class="text-black font-bold text-xl mb-2">{{ $post->title }}</h2>
+                    <div class="text-grey-darker text-base">
+                        {{ str_limit($post->content, 120) }}
+                    </div>
+                </article>
+                <div class="px-6 py-4">
+                    <a href="{{ route('blog.edit', $post->id) }}" class="inline-block bg-white hover:bg-grey-lighter text-slate-dark py-2 px-4 border border-slate-lighter rounded shadow no-underline">
+                        Edit
+                    </a>
+                    <form method="post" action="{{ route('blog.destroy', $post->id) }}" class="inline-block">
                         {{ method_field('DELETE') }}
                         {{ csrf_field() }}
-                        <button class="btn btn-danger pull-right">delete</button>
-                    </form>
-                    <form method="post" action="{{route('blog.edit', ['id' => $post->id])}}">
-                        {{ method_field('GET') }}
-                        {{ csrf_field() }}
-                        <button class="btn btn-primary pull-right" style="margin-right:5px ">edit</button>
+                        <button type="submit" class="inline-block bg-white hover:bg-red hover:text-white  text-red-dark py-2 px-4 border border-slate-lighter rounded shadow  no-underline">Delete</button>
                     </form>
                 </div>
             </div>
-        @endforeach
+        </div>
+    @endforeach
     </div>
-    </div>
-@endsection()
+</div>
+@endsection
