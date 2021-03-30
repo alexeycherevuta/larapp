@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use App\Http\Requests\PostRequest;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -13,7 +14,7 @@ class PostController extends Controller
     {
         return view('blog.create');
     }
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
         $post = new Post([
             'title' => $request->title,
@@ -32,7 +33,7 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         return view('blog.edit')->with('post', $post);
     }
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, $id)
     {
         $post = Post::findOrFail($id);
         $post->fill([

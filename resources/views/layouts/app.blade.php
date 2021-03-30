@@ -9,9 +9,9 @@
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 </head>
 <body class="bg-brand-lightest font-sans font-normal h-screen w-screen">
-    <div id="app">
-        @include('layouts.partials._nav')
-        @yield('content')
+<div id="app">
+    @include('layouts.partials._nav')
+    @yield('content')
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
