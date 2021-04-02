@@ -1,7 +1,6 @@
 <?php
 namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 class PostRequest extends FormRequest
 {
     public function authorize()
@@ -11,8 +10,8 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'bail|required',
-            'text' => 'bail|required'
+            'title' => 'unicode_text|max:255|bail|required',
+            'text'  => 'bail|required',
         ];
     }
 }

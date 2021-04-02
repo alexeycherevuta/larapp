@@ -8,7 +8,8 @@ class PostController extends Controller
 {
     public function index()
     {
-        return view('blog.index')->with('posts', Post::all());
+        $posts = Post::all();
+        return view('blog.index', compact('posts'));
     }
     public function create()
     {
@@ -17,36 +18,37 @@ class PostController extends Controller
     public function store(PostRequest $request)
     {
         $post = new Post([
-            'title' => $request->title,
+            'title'   => $request->title,
             'content' => $request->text,
-            'user_id' => Auth::id()
+            'user_id' => Auth::id(),
         ]);
         $post->save();
-        return redirect(route('blog.index'));
+        return redirect()->route('blog.index');
     }
     public function show($id)
     {
-        return view('blog.form')->with('post', Post::find($id));
+        $post = Post::find($id);
+        return view('blog.form', compact('post'));
     }
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-        return view('blog.edit')->with('post', $post);
+        return view('blog.edit', compact('post'));
     }
     public function update(PostRequest $request, $id)
     {
         $post = Post::findOrFail($id);
         $post->fill([
-           'title' => $request->title,
-           'content' => $request->text
+           'title'   => $request->title,
+           'content' => $request->text,
         ]);
         $post->save();
-        return redirect(route('blog.index'));
+        return redirect()->route('blog.index');
     }
     public function destroy($id)
     {
         $post = Post::findOrFail($id);
         $post->delete();
-        return redirect(route('blog.index'));
+        return redirect()->route('blog.index');
     }
 }
