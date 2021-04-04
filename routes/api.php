@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Http\Request;
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/login', 'Api\ApiController@authenticate');
+Route::middleware(['jwt.auth'])->group(function (){
+   Route::get('/user', 'Api\ApiController@getUser');
 });
