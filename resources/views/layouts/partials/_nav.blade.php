@@ -15,6 +15,7 @@
             <a href="{{ route('dashboard') }}" class="block mt-4 lg:inline-block lg:mt-0 text-grey-light hover:text-white mr-4 no-underline">Dashboard</a>
             @role('admin|subscriber')
             <a href="{{ route('blog.index') }}" class="block mt-4 lg:inline-block lg:mt-0 text-grey-light hover:text-white mr-4 no-underline">Blog</a>
+            <a href="{{ route('permissions.index') }}" class="block mt-4 lg:inline-block lg:mt-0 text-grey-light hover:text-white mr-4 no-underline">Permissions</a>
             @endrole()
         @endauth
         </div>

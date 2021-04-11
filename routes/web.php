@@ -7,5 +7,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('image', 'ImageController@store')->name('image.create');
     Route::prefix('admin')->group(function () {
         Route::resource('/blog', 'PostController');
+        Route::get('/permissions', 'PermissionsController@index')->name('permissions.index');
+        Route::post('/permissions/create', 'PermissionsController@createPermission')->name('permissions.create');
+        Route::get('/permissions/{id}/delete', 'PermissionsController@deletePermission')->name('permissions.delete');
     });
 });

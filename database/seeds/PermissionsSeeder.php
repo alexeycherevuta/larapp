@@ -7,16 +7,34 @@ class PermissionsSeeder extends Seeder
     public function run()
     {
         $permissions = [
-            'create-articles',
-            'edit-articles',
-            'delete-articles'
+            'admin' => [
+                'create-articles',
+                'edit-articles',
+                'delete-articles',
+                'create-roles',
+                'delete-roles',
+                'create-permissions',
+                'delete-permissions',
+                'set-permission',
+                'set-roles'
+            ],
+            'subscriber' => [
+                'create-articles',
+                'edit-articles',
+                'delete-articles',
+            ]
         ];
         $role = Role::findByName('admin');
-        foreach ($permissions as $permission){
+        foreach ($permissions['admin'] as $permission){
             $newPermissions = Permission::create(['name' => $permission]);
-            $this->command->info("[Permission #{$newPermissions->id}] Permission {$newPermissions->name} created.");
+            $this->command->info("[Permission #{$newPermissions->name}] created.");
             $role->givePermissionTo($permission);
-            $this->command->info("[Permission #{$newPermissions->id}] Added to {$role->name} .");
+            $this->command->info("[Permission #{$newPermissions->name}] Added to {$role->name} .");
+        }
+        $role = Role::findByName('subscriber');
+        foreach ($permissions['subscriber'] as $permission){
+            $role->givePermissionTo($permission);
+            $this->command->info("[Permission #{$permission}] Added to {$role->name} .");
         }
     }
 }

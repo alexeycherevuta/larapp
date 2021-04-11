@@ -5,7 +5,7 @@
     <p class="float-right">
         <a href="{{ route('blog.create') }}" class="bg-blue hover:bg-blue-dark text-white py-2 px-4 rounded  no-underline">Rédiger une news</a>
     </p>
-    @endcan()
+    @endcan
     <h1 class="text-black font-bold text-4xl mb-6 border-b border-grey-light">Blog</h1>
     <div class="flex flex-wrap -mx-4">
     @foreach($posts as $post)
@@ -23,12 +23,12 @@
                             Edit
                         </a>
                     @endcan
-                    @can('edit-articles')
+                    @can('delete-articles')
                     <form method="post" action="{{ route('blog.destroy', $post->id) }}" class="inline-block">
-                            {{ method_field('DELETE') }}
-                            {{ csrf_field() }}
-                            <button type="submit" class="inline-block bg-white hover:bg-red hover:text-white  text-red-dark py-2 px-4 border border-slate-lighter rounded shadow  no-underline">Delete</button>
-                        </form>
+                        {{ method_field('DELETE') }}
+                        {{ csrf_field() }}
+                        <button type="submit" class="inline-block bg-white hover:bg-red hover:text-white  text-red-dark py-2 px-4 border border-slate-lighter rounded shadow  no-underline">Delete</button>
+                    </form>
                     @endcan()
                 </div>
             </div>
