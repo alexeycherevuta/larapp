@@ -11,7 +11,7 @@
                     <div class="border border-grey-light bg-white shadow">
                         <article class="p-3 text-center">
                             <h2 class="text-black font-bold text-xl mb-2 text-center">{{$permission->name}}</h2>
-                            <a type="submit" href="{{route('permissions.delete', ['id' => $permission->id])}}" class="bg-white bg-red-dark text-white p-1 rounded">Supprimer</a>
+                            <a href="{{route('permissions.delete', ['id' => $permission->id])}}" class="bg-white bg-red-dark text-white p-1 rounded">Supprimer</a>
                         </article>
                     </div>
                 </div>

@@ -15,9 +15,9 @@ class PermissionsController extends Controller
         Permission::create(['name' => $request->name]);
         return redirect(route('permissions.index'));
     }
-    public function deletePermission($id)
+    public function deletePermission(Request $request)
     {
-        Permission::destroy(['id' => $id]);
+        Permission::destroy(['id' => $request->id]);
         return redirect(route('permissions.index'));
     }
 }
