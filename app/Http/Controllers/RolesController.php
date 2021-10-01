@@ -12,12 +12,12 @@ class RolesController extends Controller
     public function create(Request $request)
     {
         Role::create(['name' => $request->name]);
-        return redirect(route('roles.index'));
+        return redirect()->route('roles.index');
     }
     public function delete($id)
     {
         Role::destroy(['id' => $id]);
-        return redirect(route('roles.index'));
+        return redirect()->route('roles.index');
     }
     public function showEdit($id)
     {

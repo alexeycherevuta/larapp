@@ -13,11 +13,11 @@ class PermissionsController extends Controller
     public function create(Request $request)
     {
         Permission::create(['name' => $request->name]);
-        return redirect(route('permissions.index'));
+        return redirect()->route('permissions.index');
     }
     public function delete(Request $request)
     {
         Permission::destroy(['id' => $request->id]);
-        return redirect(route('permissions.index'));
+        return redirect()->route('permissions.index');
     }
 }
