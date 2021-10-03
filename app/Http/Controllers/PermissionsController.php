@@ -20,4 +20,14 @@ class PermissionsController extends Controller
         Permission::destroy(['id' => $request->id]);
         return redirect()->route('permissions.index');
     }
+    public function add(Request $request)
+    {
+        Role::find($request->id)->givePermissionTo($request->permission);
+        return redirect()->back();
+    }
+    public function revoke(Request $request)
+    {
+        Role::find($request->id)->revokePermissionTo($request->permission);
+        return redirect()->back();
+    }
 }

@@ -10,8 +10,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/permissions', 'PermissionsController@index')->name('permissions.index');
         Route::post('/permissions/create', 'PermissionsController@create')->name('permissions.create');
         Route::get('/permissions/{id}/delete', 'PermissionsController@delete')->name('permissions.delete');
-        Route::post('/permissions/add', 'PermissionsController@add')->name('role.create');
-        Route::post('/permissions/revoke', 'PermissionsController@revoke')->name('role.delete');
+        Route::post('/permissions/add', 'PermissionsController@add')->name('permissions.add');
+        Route::get('/permissions/revoke', 'PermissionsController@revoke')->name('permissions.revoke');
         Route::get('/role', 'RolesController@index')->name('roles.index');
         Route::post('/roles/create', 'RolesController@create')->name('roles.create');
         Route::get('/roles/{id}/delete', 'RolesController@delete')->name('roles.delete');
