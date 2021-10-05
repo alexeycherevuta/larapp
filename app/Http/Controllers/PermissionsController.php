@@ -10,24 +10,14 @@ class PermissionsController extends Controller
         $permissions = Permission::all();
         return view('permission.index', compact('permissions'));
     }
-    public function create(Request $request)
+    public function createPermission(Request $request)
     {
         Permission::create(['name' => $request->name]);
-        return redirect()->route('permissions.index');
+        return redirect(route('permissions.index'));
     }
-    public function delete(Request $request)
+    public function deletePermission(Request $request)
     {
         Permission::destroy(['id' => $request->id]);
-        return redirect()->route('permissions.index');
-    }
-    public function add(Request $request)
-    {
-        Role::find($request->id)->givePermissionTo($request->permission);
-        return redirect()->back();
-    }
-    public function revoke(Request $request)
-    {
-        Role::find($request->id)->revokePermissionTo($request->permission);
-        return redirect()->back();
+        return redirect(route('permissions.index'));
     }
 }
