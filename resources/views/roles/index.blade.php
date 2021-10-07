@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="w-full max-w-lg mx-auto leading-normal">
-        <h1 class="text-black font-bold text-4xl mb-6 border-b border-grey-light">Role</h1>
+        <h1 class="text-black font-bold text-4xl mb-6 border-b border-grey-light">Roles</h1>
     </div>
     <div class="w-full max-w-lg mx-auto leading-normal">
         <form action="{{route('roles.create')}}" class="mb-4 text-center" method="POST">{{csrf_field()}}<input type="text" class="form-group form-inline" name="name"><button class="bg-blue text-white p-1 m-1 rounded">Créer</button></form>
