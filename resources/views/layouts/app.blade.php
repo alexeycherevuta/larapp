@@ -12,6 +12,7 @@
 <body class="bg-brand-lightest font-sans font-normal h-screen">
 <div id="app">
     @include('layouts.partials._nav')
+    @include('layouts.partials._errors')
     @yield('content')
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
