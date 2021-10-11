@@ -1,4 +1,5 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.app')
+@section('content')
 <div class="container mx-auto leading-normal">
     <header>
         <p class="float-right mt-3">

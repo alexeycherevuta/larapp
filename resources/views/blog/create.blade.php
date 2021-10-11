@@ -1,25 +1,34 @@
 @extends('layouts.app')
 @section('content')
-    @if(session('errors'))
-        @foreach(session('errors')->all() as $error)
-            <div class="bg-red-lightest border-l-4 border-red text-red-dark p-4" role="alert">
-                <p class="font-bold">Oh Mon Dieu ! Quelque chose n'a pas fonctionné ...</p>
-                <p>{{$error}}</p>
+<div class="container mx-auto leading-normal">
+    <header>
+        <p class="float-right mt-3">
+            <a href="{{ route('blog.index') }}" class="bg-transparent hover:bg-grey-lighter text-grey-dark hover:text-grey-darker py-2 px-4 border hover:border-grey rounded-sm  no-underline">Retour</a>
+        </p>
+        <h1 class="text-black font-bold text-4xl pb-3 mb-6 border-b border-grey-light">Rédaction d'un article</h1>
+    </header>
+    <form class="w-full" method="post" action="{{ route('blog.create') }}">
+        {{ method_field('PUT') }}
+        {{ csrf_field() }}
+        <div class="mb-6">
+            <label class="block text-grey font-bold mb-1" for="blog-title">
+                Titre
+            </label>
+            <div class="w-full block">
+                <input class="bg-white appearance-none border-2 border-grey-light hover:border-blue rounded w-full py-2 px-4 text-grey-darker" id="blog-title" type="text" name="title" value="{{ old('title') }}">
             </div>
-        @endforeach
-    @endIf
-    <form method="post" action="{{ route('blog.store') }}">
-        {{csrf_field()}}
-        <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" class="form-control" name="title" >
         </div>
-        <div class="form-group">
-            <label for="content">Content</label>
-            <textarea name="text" cols="30" rows="10" class="form-control"></textarea>
+        <div class="mb-6">
+            <label class="block text-grey font-bold mb-1" for="blog-content">
+                Content
+            </label>
+            <div class="w-full block">
+                <textarea id="blog-content" name="text" cols="30" rows="10" class="bg-white appearance-none border-2 border-grey-light hover:border-blue rounded w-full py-2 px-4 text-grey-darker">{{ old('content') }}</textarea>
+            </div>
         </div>
-        <button class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded pull-right">
-            Envoyer
+        <button type="submit" class="bg-blue hover:bg-blue-dark text-white py-2 px-4 rounded pull-right no-underline">
+            Enregistrer
         </button>
     </form>
-@endsection()
+</div>
+@endsection
