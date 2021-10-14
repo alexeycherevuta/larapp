@@ -19,6 +19,7 @@
             @role('admin')
                 <a href="{{ route('permissions.index') }}" class="block mt-4 lg:inline-block lg:mt-0 text-grey-light hover:text-white mr-4 no-underline">Permissions</a>
                 <a href="{{ route('roles.index') }}" class="block mt-4 lg:inline-block lg:mt-0 text-grey-light hover:text-white mr-4 no-underline">Roles</a>
+                <a href="{{ route('users.index') }}" class="block mt-4 lg:inline-block lg:mt-0 text-grey-light hover:text-white mr-4 no-underline">Users</a>
             @endrole
             @endauth
         </div>
