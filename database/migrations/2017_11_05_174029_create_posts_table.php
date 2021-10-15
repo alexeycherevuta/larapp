@@ -9,8 +9,7 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->longText('content');
-            $table->string('slug')->unique();
+            $table->longText('body');
             $table->boolean('is_online')->default(false);
             $table->timestamps();
         });

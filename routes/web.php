@@ -7,7 +7,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('image', 'ImageController@store')->name('image.create');
     Route::prefix('admin')->group(function () {
         Route::get('/user/spy/{id}', 'UsersController@spy')->name('users.spy');
-        Route::resource('/blog', 'PostController');
+        Route::resource('/post', 'PostController');
         Route::get('/permissions', 'PermissionsController@index')->name('permissions.index');
         Route::post('/permissions/create', 'PermissionsController@create')->name('permissions.create');
         Route::get('/permissions/{id}/delete', 'PermissionsController@delete')->name('permissions.delete');

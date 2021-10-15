@@ -1,54 +1,43 @@
 <?php
 namespace App\Http\Controllers;
 use App\Http\Requests\PostRequest;
-use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Post;
 class PostController extends Controller
 {
     public function index()
     {
         $posts = Post::all();
-        return view('blog.index', compact('posts'));
+        return view('post.index', compact('posts'));
     }
     public function create()
     {
-        return view('blog.create');
+        return view('post.create');
     }
     public function store(PostRequest $request)
     {
-        $post = new Post([
-            'title'   => $request->title,
-            'content' => $request->text,
-            'user_id' => Auth::id(),
-        ]);
-        $post->save();
-        return redirect()->route('blog.index');
+        auth()->user()->publish(
+            new Post($request->toArray())
+        );
+        return redirect()->route('post.index');
     }
-    public function show($id)
+    public function show(Post $post)
     {
-        $post = Post::find($id);
-        return view('blog.form', compact('post'));
+        return view('post.form', compact('post'));
     }
-    public function edit($id)
+    public function edit(Post $post)
     {
-        $post = Post::findOrFail($id);
-        return view('blog.edit', compact('post'));
+        return view('post.edit', compact('post'));
     }
-    public function update(PostRequest $request, $id)
+    public function update(Post $post)
     {
-        $post = Post::findOrFail($id);
-        $post->fill([
-           'title'   => $request->title,
-           'content' => $request->text,
-        ]);
-        $post->save();
-        return redirect()->route('blog.index');
+        $post->update(request(['title', 'body']));
+        return redirect()->route('post.index');
     }
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        $post = Post::findOrFail($id);
         $post->delete();
-        return redirect()->route('blog.index');
+        return back();
     }
 }

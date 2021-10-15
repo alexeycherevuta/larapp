@@ -14,14 +14,14 @@
         @auth
             <a href="{{ route('dashboard') }}" class="block mt-4 lg:inline-block lg:mt-0 text-grey-light hover:text-white mr-4 no-underline">Dashboard</a>
             @role('admin|subscriber')
-            <a href="{{ route('blog.index') }}" class="block mt-4 lg:inline-block lg:mt-0 text-grey-light hover:text-white mr-4 no-underline">Blog</a>
+            <a href="{{ route('post.index') }}" class="block mt-4 lg:inline-block lg:mt-0 text-grey-light hover:text-white mr-4 no-underline">Blog</a>
             @endrole
             @role('admin')
                 <a href="{{ route('permissions.index') }}" class="block mt-4 lg:inline-block lg:mt-0 text-grey-light hover:text-white mr-4 no-underline">Permissions</a>
                 <a href="{{ route('roles.index') }}" class="block mt-4 lg:inline-block lg:mt-0 text-grey-light hover:text-white mr-4 no-underline">Roles</a>
                 <a href="{{ route('users.index') }}" class="block mt-4 lg:inline-block lg:mt-0 text-grey-light hover:text-white mr-4 no-underline">Users</a>
             @endrole
-            @endauth
+        @endauth
         </div>
         @guest
         <div>

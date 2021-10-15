@@ -11,7 +11,7 @@ class PostRequest extends FormRequest
     {
         return [
             'title' => 'unicode_text|max:255|bail|required',
-            'text'  => 'bail|required',
+            'body'  => 'bail|required',
         ];
     }
 }
