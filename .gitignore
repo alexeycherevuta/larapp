@@ -17,3 +17,5 @@ npm-debug.log
 yarn-error.log
 .env
 _ide_helper.php
+/app/.php_cs.cache
+/app/Http/controllers/.php_cs.cache
