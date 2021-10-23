@@ -10,7 +10,7 @@
         <h1 class="text-black font-bold text-4xl pb-3 mb-6 border-b border-grey-light">Blog</h1>
     </header>
     <div class="flex flex-wrap -mx-2">
-    @foreach($posts as $post)
+    @forelse($posts as $post)
         <div class="w-full md:w-1/2 lg:w-1/2 px-4 mb-8">
             <div class="border border-grey-light bg-white shadow">
                 <article class="mb-2 p-3">
@@ -35,7 +35,11 @@
                 </div>
             </div>
         </div>
-    @endforeach
+    @empty
+        <div class="w-full md:w-1/2 mx-auto bg-blue-light p-2 text-center text-2xl font-serif italic">
+            <p>Get to your writing !</p>
+        </div>
+    @endforelse
     </div>
 </div>
 @endsection
