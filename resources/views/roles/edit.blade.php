@@ -3,7 +3,7 @@
     <div class="container px-4 mx-auto pb-6 pt-2">
     <header>
         @can('create-articles')
-            <form method='post' class="float-right" action="{{route('permissions.add', ['id' => $id])}}">
+            <form method='POST' class="float-right" action="{{route('permissions.add', ['role' => $role])}}">
                 {{csrf_field()}}
                 <select name="permission">
                     @foreach($permissions as $select)
@@ -21,7 +21,10 @@
                 <div class="border border-grey-light bg-white shadow">
                     <article class="p-3 text-center">
                         <h2 class="text-black font-bold text-xl mb-2 text-center">{{$permission->name}}</h2>
-                        <a href="{{route('permissions.revoke', ['id' => $id, 'permission' => $permission->name])}}" class="bg-white bg-red-dark text-white p-1 rounded">Supprimer</a>
+                        <form method="POST" action="{{ route('permissions.revoke', ['permission' => $permission, 'role' => $role]) }}" class="mb-4 text-center">
+                            {{ csrf_field()}}
+                            <button class="bg-red-dark text-white p-1 m-1 rounded">Retirer</button>
+                        </form>
                     </article>
                 </div>
             </div>

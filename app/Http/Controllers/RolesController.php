@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use App\Http\Requests\RoleForm;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -10,20 +11,20 @@ class RolesController extends Controller
         $roles = Role::all();
         return view('roles.index', compact('roles'));
     }
-    public function create(Request $request)
+    public function store(RoleForm $form)
     {
-        Role::create(['name' => $request->name]);
+        $form->persist();
+        return back();
+    }
+    public function destroy(Role $role)
+    {
+        $role->delete();
         return redirect()->route('roles.index');
     }
-    public function delete($id)
+    public function edit(Role $role)
     {
-        Role::destroy(['id' => $id]);
-        return redirect()->route('roles.index');
-    }
-    public function showEdit($id)
-    {
-        $rolePermissions = Role::find($id)->permissions()->get();
+        $rolePermissions = $role->permissions()->get();
         $permissions = Permission::all()->whereNotIn('name', $rolePermissions->pluck('name'))->pluck('name');
-        return view('roles.edit', compact('rolePermissions', 'permissions', 'id'));
+        return view('roles.edit', compact('rolePermissions', 'permissions', 'role'));
     }
 }

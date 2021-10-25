@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use App\Http\Requests\PermissionForm;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -10,24 +11,24 @@ class PermissionsController extends Controller
         $permissions = Permission::all();
         return view('permission.index', compact('permissions'));
     }
-    public function create(Request $request)
+    public function store(PermissionForm $form)
     {
-        Permission::create(['name' => $request->name]);
-        return redirect()->route('permissions.index');
+        $form->persist();
+        return back();
     }
-    public function delete(Request $request)
+    public function destroy(Permission $permission)
     {
-        Permission::destroy(['id' => $request->id]);
-        return redirect()->route('permissions.index');
+        $permission->delete();
+        return back();
     }
-    public function add(Request $request)
+    public function add(Role $role)
     {
-        Role::find($request->id)->givePermissionTo($request->permission);
+        $role::find(request('role'))->givePermissionTo(request('permission'));
         return redirect()->back();
     }
-    public function revoke(Request $request)
+    public function revoke(Role $role)
     {
-        Role::find($request->id)->revokePermissionTo($request->permission);
+        $role::find(request('role'))->revokePermissionTo(request('permission')); 
         return redirect()->back();
     }
 }
