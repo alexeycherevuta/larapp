@@ -24,11 +24,11 @@ class PermissionsController extends Controller
     public function add(Role $role)
     {
         $role::find(request('role'))->givePermissionTo(request('permission'));
-        return redirect()->back();
+        return back();
     }
     public function revoke(Role $role)
     {
         $role::find(request('role'))->revokePermissionTo(request('permission')); 
-        return redirect()->back();
+        return back();
     }
 }
