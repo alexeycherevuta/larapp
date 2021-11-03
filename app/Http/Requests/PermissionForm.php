@@ -6,11 +6,7 @@ class PermissionForm extends FormRequest
 {
     public function authorize()
     {
-        if (auth()->user()->can('create-permissions')) {
-            return true;
-        } else {
-            return false;
-        }
+        return auth()->user()->can('create-permissions');
     }
     public function rules()
     {

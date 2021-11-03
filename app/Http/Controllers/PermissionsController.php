@@ -28,7 +28,9 @@ class PermissionsController extends Controller
     }
     public function revoke(Role $role)
     {
-        $role::find(request('role'))->revokePermissionTo(request('permission')); 
+        $role = $role::find(request('role'));
+        $permission = Permission::find(request('permission'));
+        $role->revokePermissionTo($permission);
         return back();
     }
 }

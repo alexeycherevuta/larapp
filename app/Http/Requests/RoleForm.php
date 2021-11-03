@@ -6,11 +6,7 @@ class RoleForm extends FormRequest
 {
     public function authorize()
     {
-        if (auth()->user()->can('create-roles')) {
-            return true;
-        } else {
-            return false;
-        }
+        return auth()->user()->can('create-roles');
     }
     public function rules()
     {
